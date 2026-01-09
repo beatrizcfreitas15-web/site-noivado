@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Noivado de Beatriz & TAdeu</title>
+  <title>Noivado de Beatriz & Tadeu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -50,14 +50,22 @@
 </head>
 
 <body>
-
+  
+<nav style="background:#fff; padding:15px; text-align:center;">
+  <a href="#página inicial" style="margin:15px;">Página Inicial</a>
+  <a href="#contagem" style="margin:15px;">Contagem Regressiva</a>
+  <a href="#presenca" style="margin:15px;">Confirmação de Presença</a>
+  <a href="#pix" style="margin:15px;">PIX</a>
+   <a href="#cerimônia" style="margin:15px;">cerimônia</a>
+</nav>
+  
 <header>
   <h1>Beatriz & Tadeu</h1>
   <p>Vamos noivar!</p>
   <p>📅 05 de setembro de 2026</p>
 </header>
 
-<section>
+<section id="inicio>
   <h2>Nossa História</h2>
   <p>
     Toda história de amor tem seus capítulos especiais.
@@ -66,6 +74,28 @@
   </p>
 </section>
 
+  <section id="contagem">
+  <h2>Contagem Regressiva</h2>
+  <p id="contador" style="font-size:1.5em; font-weight:bold;"></p>
+</section>
+
+<script>
+  const dataEvento = new Date("2026-09-20T17:00:00").getTime();
+
+  setInterval(() => {
+    const agora = new Date().getTime();
+    const diferenca = dataEvento - agora;
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    document.getElementById("contador").innerHTML =
+      `${dias} dias • ${horas}h ${minutos}m ${segundos}s`;
+  }, 1000);
+</script>
+  
 <section>
   <h2>O Grande Dia</h2>
   <p><strong>Data:</strong> 05 de setembro de 2026</p>
@@ -81,9 +111,17 @@
     Mas, se desejar nos presentear, deixamos algumas sugestões abaixo:
   </p>
 
-  <a href="https://www.mercadolivre.com.br" target="_blank">🎁 Presente 1</a>
-  <a href="https://www.amazon.com.br" target="_blank">🎁 Presente 2</a>
-  <a href="https://www.pix.com.br" target="_blank">💳 Contribuição via PIX</a>
+<section id="pix">
+  <h2>Presente via PIX</h2>
+
+  <p>
+    Se desejar nos presentear, utilize o QR Code abaixo:
+  </p>
+
+  <img src="pix-qrcode.png" 
+       alt="QR Code PIX Beatriz e Tadeu"
+       style="max-width:250px; margin:20px auto; display:block;">
+  
 </section>
 
 <section>
@@ -101,3 +139,4 @@
 </body>
 
 </html>
+
