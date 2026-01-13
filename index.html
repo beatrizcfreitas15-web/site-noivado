@@ -4,68 +4,156 @@
   <meta charset="UTF-8">
   <title>Noivado de Beatriz & Tadeu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lora&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      background-color: #f9f7f5;
+      font-family: 'Lora', serif;
+      background:
+        linear-gradient(180deg, #f9f7f5, #efe6df),
+        url("https://www.transparenttextures.com/patterns/flowers.png");
       color: #333;
     }
-    header {
-      background: #e8dcd3;
-      padding: 40px 20px;
+
+    nav {
+      background: #ffffffcc;
+      padding: 15px;
       text-align: center;
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2em;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    h2 {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    .presentes a {
-      display: block;
-      margin: 10px 0;
+
+    nav a {
+      margin: 15px;
       text-decoration: none;
       color: #5a3e2b;
       font-weight: bold;
     }
+
+    header {
+      background: #e8dcd3;
+      padding: 60px 20px 80px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    .foto-casal {
+      text-align: center;
+      margin-top: -50px;
+    }
+
+    .foto-casal img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 8px solid #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    section {
+      background: #fff;
+      padding: 40px 25px;
+      max-width: 800px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       background: #e8dcd3;
       font-size: 0.9em;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* WhatsApp button */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      padding: 15px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.3em;
+      }
+
+      .foto-casal img {
+        width: 200px;
+        height: 200px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
     }
   </style>
 </head>
 
 <body>
-  
-<nav style="background:#fff; padding:15px; text-align:center;">
-  <a href="#página inicial" style="margin:15px;">Página Inicial</a>
-  <a href="#contagem" style="margin:15px;">Contagem Regressiva</a>
-  <a href="#presenca" style="margin:15px;">Confirmação de Presença</a>
-  <a href="#pix" style="margin:15px;">PIX</a>
-   <a href="#cerimônia" style="margin:15px;">cerimônia</a>
+
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#contagem">Contagem</a>
+  <a href="#pix">PIX</a>
+  <a href="#presenca">Presença</a>
 </nav>
-  
+
 <header>
   <h1>Beatriz & Tadeu</h1>
   <p>Vamos noivar!</p>
   <p>📅 05 de setembro de 2026</p>
 </header>
 
-<section id="inicio>
+<div class="foto-casal">
+  <img src="casal.jpg" alt="Foto do casal">
+</div>
+
+<section id="inicio" class="fade-in">
   <h2>Nossa História</h2>
   <p>
     Toda história de amor tem seus capítulos especiais.
@@ -74,13 +162,13 @@
   </p>
 </section>
 
-  <section id="contagem">
+<section id="contagem" class="fade-in">
   <h2>Contagem Regressiva</h2>
-  <p id="contador" style="font-size:1.5em; font-weight:bold;"></p>
+  <p id="contador" style="font-size:1.5em; font-weight:bold; text-align:center;"></p>
 </section>
 
 <script>
-  const dataEvento = new Date("2026-09-20T17:00:00").getTime();
+  const dataEvento = new Date("2026-09-05T12:00:00").getTime();
 
   setInterval(() => {
     const agora = new Date().getTime();
@@ -94,41 +182,40 @@
     document.getElementById("contador").innerHTML =
       `${dias} dias • ${horas}h ${minutos}m ${segundos}s`;
   }, 1000);
+
+  /* Fade-in on scroll */
+  const elements = document.querySelectorAll('.fade-in');
+  const showOnScroll = () => {
+    const trigger = window.innerHeight * 0.9;
+    elements.forEach(el => {
+      if (el.getBoundingClientRect().top < trigger) {
+        el.classList.add('show');
+      }
+    });
+  };
+  window.addEventListener('scroll', showOnScroll);
+  showOnScroll();
 </script>
-  
-<section>
+
+<section class="fade-in">
   <h2>O Grande Dia</h2>
   <p><strong>Data:</strong> 05 de setembro de 2026</p>
   <p><strong>Horário:</strong> 12h</p>
-  <p><strong>Local:</strong> A definir / Espaço de Eventos</p>
+  <p><strong>Local:</strong> A definir</p>
   <p>Será uma alegria imensa compartilhar esse momento com você 💖</p>
 </section>
 
-<section class="presentes">
-  <h2>Lista de Presentes</h2>
-  <p>
-    O maior presente é a sua presença.
-    Mas, se desejar nos presentear, deixamos algumas sugestões abaixo:
-  </p>
-
-<section id="pix">
+<section id="pix" class="fade-in">
   <h2>Presente via PIX</h2>
-
-  <p>
-    Se desejar nos presentear, utilize o QR Code abaixo:
-  </p>
-
-  <img src="pix-qrcode.png" 
-       alt="QR Code PIX Beatriz e Tadeu"
-       style="max-width:250px; margin:20px auto; display:block;">
-  
+  <p style="text-align:center;">Se desejar nos presentear, utilize o QR Code abaixo:</p>
+  <img src="pix-qrcode.png" alt="PIX" style="max-width:250px; margin:20px auto; display:block;">
 </section>
 
-<section>
+<section id="presenca" class="fade-in">
   <h2>Confirmação de Presença</h2>
-  <p>
+  <p style="text-align:center;">
     Confirme sua presença pelo WhatsApp:<br>
-    📱 (88) 9.9945-9725
+    📱 (88) 9 9945-9725
   </p>
 </section>
 
@@ -136,7 +223,13 @@
   <p>Com amor, Beatriz & Tadeu 💍</p>
 </footer>
 
+<a href="https://wa.me/5588999459725" class="whatsapp" target="_blank">
+  💬 Confirmar Presença
+</a>
+
 </body>
+</html>
 
 </html>
+
 
